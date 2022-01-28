@@ -14,6 +14,9 @@ import org.openqa.selenium.support.pagefactory.ByChained;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 
 
@@ -87,5 +90,17 @@ public class Methods {
         Assertions.assertEquals(webElements.size(),5);
     }
 
+    @Test
+     void testUploadFile() throws IOException {
+        /**загрузка файла необходимо использовать абсолютный путь до файла*/
+        String url = "https://bonigarcia.dev/selenium-webdriver-java/web-form.html";
+        webDriver.get(url);
+        WebDriverWait wait = new WebDriverWait(webDriver, 10);
+        WebElement inputFile = wait.until(ExpectedConditions.
+                            presenceOfElementLocated(By.name("my-file")));
+
+        String tempFile = "/home/hind/Desktop/java_proj/SWDJ/src/main/resources/test.txt";
+        inputFile.sendKeys(tempFile);
+    }
 
 }
