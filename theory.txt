@@ -1,0 +1,92 @@
+в зависимости от проекта мы различаем уровни тестирования
+Приемочное    |Acceptance  -|-> User testing (validation) сделан ли продукт правильно ?
+Сквозное      |End-to-end  -|
+Системное     |System      -|-> Development testing (verification) делаем ли мы правильно продукт ?
+Интеграционное|Integration -|
+Юнит          |Unit        -|
+
+Селениум позволояет выполнять end to end тесты
+functional = Ui testing , Negative , CrossBrowser testing
+perfomance = load testing , stress testing
+secuirity
+usability
+accessability
+
+тестовые методологии
+TDD разработка на основе тестирования  сперва тесты потом код
+TLD традиционная разработка сперва ПО потом тесты
+BDD разработка на основе поведения
+           -------------------------------------------------------------------------------------------
+          |                                     ContinuousDeployment                                  |
+          | _________________________________________________________________                         |
+          |                      Continuous Delivery                         |                        |
+          |_____________________________                                     |                        |
+          |      ContinuousIntegration   |                                   |                        |
+          |-----------------------------|                                    |                        |
+commit -> |Build -> DevelopmentTests    |-> Deploy to testing -> Acceptance  |-> Deploy to Prod. env  |
+          |           unit,integration  |   env                     tests    |                        |
+          |          system ,e2e        |                                    |                        |
+           --------------------------------------------------------------------------------------------
+
+                webdriver method
+method              return          description
+get                 void            load web page in current browser
+getCurrentUrl       String          get current url
+getTitle            String          get title (<title> - html tag)
+findElement         WebElement      find first webelement
+findElements        List<WebElement>find all webElements
+getPageSource       String          get html source code of current page
+navigate            Navigation      Acces the browser history and navigate to a given URL
+getWindowHandle     String          unique indentifier for the open window in browser
+getWindowHandless   Set<String>     get the set if window handless currently opened
+switchTo            TargetLocator   select a frame or window in the current browser
+manage              Options         control windowSize, position, timeOut, cookies, logs
+close               void            close the current window if there is no more opened windows
+quit                void            Close all windows and quit the browser
+
+
+            webelement method
+method              return
+click               void              make mouse click
+submit              void              send a web form
+sendKeys            void              simulate typing with keyboard
+clear               void              reset the  value if an input text
+getTagName          String            get tag name of element
+getDomProperty      String            get value of a dom property
+getDomAttribute     String            get value of element attribute
+getAttribute        String            get the value of the dom  property
+getAriaRole         String            get element role as defined on spec
+getAccessibleName   String            get name as defined on spec
+isSelected          boolean           determine selected or not element
+isEnabled           boolean           determine enabled or not element
+isDisplayed         boolean           determine visible or not element
+getText             String            get visible text of element
+getLocation         Point             get position and size of rendered element
+getSize             Dimension         get the width and height if rendered element
+getRect             Rectangle         get the location and size of rendered element
+getCssValue         String            get css values or property
+getShadowRoot       SearchContext     get root to search in tree
+findElement         WebElement        find first subElement
+findElements        list<Webelement>  findAll subElement
+
+    location strategies
+1. Tag name
+2. Link text
+3. Partial link text
+4. id
+5. Class name
+6. CSS selector
+7. XPATH
+
+
+
+
+
+
+
+
+
+
+
+
+
