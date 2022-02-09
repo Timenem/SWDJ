@@ -18,17 +18,17 @@ TLD традиционная разработка сперва ПО потом �
 BDD разработка на основе поведения
            -------------------------------------------------------------------------------------------
           |                                     ContinuousDeployment                                  |
-          | _________________________________________________________________                         |
-          |                      Continuous Delivery                         |                        |
+          |__________________________________________________________________                         |
+          |                      ContinuousDelivery                          |                        |
           |_____________________________                                     |                        |
-          |      ContinuousIntegration   |                                   |                        |
+          |      ContinuousIntegration  |                                    |                        |
           |-----------------------------|                                    |                        |
 commit -> |Build -> DevelopmentTests    |-> Deploy to testing -> Acceptance  |-> Deploy to Prod. env  |
-          |           unit,integration  |   env                     tests    |                        |
+          |          unit,integration   |   env                     tests    |                        |
           |          system ,e2e        |                                    |                        |
            --------------------------------------------------------------------------------------------
 
-                webdriver method
+                webDriver method
 method              return          description
 get                 void            load web page in current browser
 getCurrentUrl       String          get current url
@@ -77,6 +77,7 @@ findElements        list<Webelement>  findAll subElement
 5. Class name
 6. CSS selector
 7. XPATH
+
 
 
 
