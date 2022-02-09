@@ -1,26 +1,19 @@
 package seleniumMethods;
 
+import org.apache.commons.lang.SystemUtils;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Point;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ByIdOrName;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.locators.RelativeLocator;
 import org.openqa.selenium.support.pagefactory.ByAll;
 import org.openqa.selenium.support.pagefactory.ByChained;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
@@ -177,6 +170,22 @@ public class Methods {
             actions.moveByOffset((int) x, (int) y);
         }
         actions.release(webElement).build().perform();
-
     }
+
+    @Test
+    void testCopyAndPaste() {
+        /*скопировать вставить*/
+        webDriver.get("https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
+        Actions actions = new Actions(webDriver);
+        WebDriverWait wait = new WebDriverWait(webDriver,Duration.ofSeconds(10));
+        WebElement inputText = wait.until(ExpectedConditions.
+                visibilityOfElementLocated(By.name("my-text")));
+        WebElement textarea = wait.until(ExpectedConditions.
+                visibilityOfElementLocated(By.name("my-textarea")));
+        Keys modifier = SystemUtils.IS_OS_LINUX ? Keys.COMMAND:Keys.CONTROL;
+        actions.sendKeys(inputText, "hello world").keyDown(modifier)
+                .sendKeys(inputText, "a").sendKeys(inputText, "c")
+                .sendKeys(textarea, "v").build().perform();
+    }
+
 }
