@@ -157,4 +157,26 @@ public class Methods {
         actions.dragAndDrop(dragElement,target).build().perform();
         assert target.getLocation().equals(dragElement.getLocation());
     }
+
+    @Test
+    void testClickAndHold(){
+        /*удержание и движение курсором по вебэлементу */
+        webDriver.get("https://bonigarcia.dev/selenium-webdriver-java/draw-in-canvas.html");
+        Actions actions = new Actions(webDriver);
+        WebDriverWait wait = new WebDriverWait(webDriver,Duration.ofSeconds(10));
+        WebElement webElement = wait.until(ExpectedConditions.
+                presenceOfElementLocated(By.tagName("canvas")));
+
+        actions.moveToElement(webElement).clickAndHold();
+        int numPoints = 10;
+        int radius = 30;
+        for (int i = 0; i <= numPoints; i++) {
+            double angle = Math.toRadians(360 * i / numPoints);
+            double x = Math.sin(angle) * radius;
+            double y = Math.cos(angle) * radius;
+            actions.moveByOffset((int) x, (int) y);
+        }
+        actions.release(webElement).build().perform();
+
+    }
 }
