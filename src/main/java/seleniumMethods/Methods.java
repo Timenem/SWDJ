@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -134,5 +135,26 @@ public class Methods {
             Thread.sleep(1000L);
             actions.moveToElement(image).build().perform();
         }
+    }
+
+
+    @Test
+    void testDragAndDrop(){
+        /*захват вебэлемента и перемещение его по странице*/
+        webDriver.get("https://bonigarcia.dev/selenium-webdriver-java/drag-and-drop.html");
+        Actions actions = new Actions(webDriver);
+        WebDriverWait wait = new WebDriverWait(webDriver,Duration.ofSeconds(10));
+        WebElement dragElement = wait.until(ExpectedConditions.
+                presenceOfElementLocated(By.id("draggable")));
+        int offset = 100;
+        Point initLocation = dragElement.getLocation();
+        actions.dragAndDropBy(dragElement, offset, 0)
+                .dragAndDropBy(dragElement, 0, offset)
+                .dragAndDropBy(dragElement, -offset, 0)
+                .dragAndDropBy(dragElement, 0, -offset).build().perform();
+        WebElement target = wait.until(ExpectedConditions.
+                presenceOfElementLocated(By.id("target")));
+        actions.dragAndDrop(dragElement,target).build().perform();
+        assert target.getLocation().equals(dragElement.getLocation());
     }
 }
